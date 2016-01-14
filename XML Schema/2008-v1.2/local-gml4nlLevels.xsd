@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://www.geonovum.nl/gml4nl/1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml4nl="http://www.geonovum.nl/gml4nl/1.0" elementFormDefault="qualified">
+	<element name="ComplianceLevel">
+		<simpleType>
+			<restriction base="integer">
+				<enumeration value="1"/>
+				<enumeration value="2"/>
+			</restriction>
+		</simpleType>
+	</element>
+	<element name="GMLProfileSchema" type="anyURI"/>
+</schema>
