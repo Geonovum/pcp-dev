@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<imro:Plangebied_PCP xmlns:gml="http://www.opengis.net/gml"
+ xmlns:gml4nl="http://www.geonovum.nl/gml4nl/1.0"
+ xmlns:imro="http://www.geonovum.nl/imro/pcp/2008/1.2"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.geonovum.nl/imro/pcp/2008/1.2 file:/W:/Github/Geonovum/pcp-dev/XML%20Schema/2008-v1.2/local-IMROPCP2008.xsd" gml:id="ID000">
+    <imro:identificatie>identificatie0</imro:identificatie>
+    <imro:typePlan>gemeentelijk plan; bestemmingsplan artikel 10</imro:typePlan>
+    <imro:beleidsmatigVerantwoordelijkeOverheid>gemeentelijke overheid</imro:beleidsmatigVerantwoordelijkeOverheid>
+    <imro:naamOverheid>naamOverheid0</imro:naamOverheid>
+    <imro:overheidsCode>overheidsCode0</imro:overheidsCode>
+    <imro:naam>naam0</imro:naam>
+    <imro:planstatusInfo>
+        <imro:PlanstatusEnDatum_PCP>
+            <imro:planstatus>concept</imro:planstatus>
+            <imro:datum>2006-05-04</imro:datum>
+        </imro:PlanstatusEnDatum_PCP>
+    </imro:planstatusInfo>
+    <imro:verwijzingNorm>verwijzingNorm0</imro:verwijzingNorm>
+    <imro:verwijzingNorm>verwijzingNorm1</imro:verwijzingNorm>
+    <imro:geometrie>
+        <gml:MultiSurface>
+        </gml:MultiSurface>
+    </imro:geometrie>
+</imro:Plangebied_PCP>
