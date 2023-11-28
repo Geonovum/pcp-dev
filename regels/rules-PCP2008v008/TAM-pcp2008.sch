@@ -21,6 +21,7 @@
  * 30-03-2015  LvdB Added two new rules to check illegal continued reference to PDF plans after certain dates.
  * 07-06-2017  LvdB Multiple changes due to changes in regulation concerning 10-year term for updating zoningplans
  * 04-09-2018	GK	PCP2008 rule de-activated in line 298. This rule was never implemented at Ruimtelijkeplannen.nl
+  * 28-11-2023  AdB  Blokkeren PCP Plannen per 1-1-2024
  ******************************************************************************/
 
 Opmerkingen / hints:

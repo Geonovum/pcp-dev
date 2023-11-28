@@ -20,6 +20,7 @@
  *                  Adapted permitted document prefixes: check AD6A.
  * 30-03-2015  LvdB Added two new rules to check illegal continued reference to PDF plans after certain dates.
  * 07-06-2017  LvdB Multiple changes due to changes in regulation concerning 10-year term for updating zoningplans
+ * 28-11-2023  AdB  Blokkeren PCP Plannen per 1-1-2024
  ******************************************************************************/
 
 Opmerkingen / hints:
@@ -313,6 +314,17 @@ Foutcode AD13: <iso:name/> dient een geometrische inhoud te hebben.
 		
 	</iso:pattern>	
 	
+	<!--
+		  _                _             ____        _______       __  __       _ _             _              _     _  
+		 | |              (_)           / __ \      |__   __|/\   |  \/  |     (_) |           | |            (_)   | | 
+		 | |__   ___  __ _ _ _ __      | |  | |_      _| |  /  \  | \  / |_   _ _| |_ __ _  ___| |__  _ __ ___ _  __| | 
+		 | '_ \ / _ \/ _` | | '_ \     | |  | \ \ /\ / / | / /\ \ | |\/| | | | | | __/ _` |/ _ \ '_ \| '__/ _ \ |/ _` | 
+		 | |_) |  __/ (_| | | | | |    | |__| |\ V  V /| |/ ____ \| |  | | |_| | | || (_| |  __/ |_) | | |  __/ | (_| | 
+		 |_.__/ \___|\__, |_|_| |_|     \____/  \_/\_/ |_/_/    \_\_|  |_|\__,_|_|\__\__, |\___|_.__/|_|  \___|_|\__,_| 
+		              __/ |                                                           __/ |                             
+		             |___/                                                           |___/                              
+	-->
+	
 	<!-- BEGIN Validaties t.b.v. Tijdelijke Alternatieve Maatregel c.q. Overgangsrecht Omgevingswet -->
 	<iso:let name="identificatie" value="@gml:id"/>
 	<iso:pattern id="OwTAMuitgebreid">      
@@ -333,6 +345,18 @@ Foutcode AD13: <iso:name/> dient een geometrische inhoud te hebben.
 		
 		
 	</iso:pattern>
+	
+	<!-- 
+		       _           _            ____        _______       __  __       _ _             _              _     _  
+		      (_)         | |          / __ \      |__   __|/\   |  \/  |     (_) |           | |            (_)   | | 
+		   ___ _ _ __   __| | ___     | |  | |_      _| |  /  \  | \  / |_   _ _| |_ __ _  ___| |__  _ __ ___ _  __| | 
+		  / _ \ | '_ \ / _` |/ _ \    | |  | \ \ /\ / / | / /\ \ | |\/| | | | | | __/ _` |/ _ \ '_ \| '__/ _ \ |/ _` | 
+		 |  __/ | | | | (_| |  __/    | |__| |\ V  V /| |/ ____ \| |  | | |_| | | || (_| |  __/ |_) | | |  __/ | (_| | 
+		  \___|_|_| |_|\__,_|\___|     \____/  \_/\_/ |_/_/    \_\_|  |_|\__,_|_|\__\__, |\___|_.__/|_|  \___|_|\__,_| 
+		                                                                             __/ |                             
+		                                                                            |___/                                                    
+	-->
+	
 	
 
 	
