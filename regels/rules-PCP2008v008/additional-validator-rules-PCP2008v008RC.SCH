@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /*******************************************************************************
- * File: additional-validator-rules-PCP2008v007RC.sch
+ * File: additional-validator-rules-PCP2008v008RC.sch
  * (C) Logica, 2008
  *
  * Info:
