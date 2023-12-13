@@ -35,7 +35,7 @@ Opmerkingen / hints:
 
 	<iso:ns prefix="gml" uri="http://www.opengis.net/gml"/>
 	<iso:ns prefix="imro" uri="http://www.geonovum.nl/imro/pcp/2008/1.2"/>
-	<iso:ns prefix="regexp" uri="nl.vrom.roo.util.Regexp"/>
+	<iso:ns prefix="regexp" uri="nl.overheid.roo.util.Regexp"/>
 		
 	<iso:let name="lowercaseChars" value="'abcdefghijklmnopqrstuvwxyz'"/>
 	<iso:let name="uppercaseChars" value="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
@@ -217,15 +217,15 @@ De planId (<iso:value-of select="$detectedPlanId"/>) volgt niet onmiddelijk na d
 
 		
 
-		<!-- Alle verwijzingen naar tekst worden gecheckt in het geval dat plantype = bestemmingsplan --> 
+		<!-- Alle verwijzingen naar tekst worden gecheckt in het geval dat plantype = bestemmingsplan -->
 		<iso:rule context="//imro:verwijzingNaarTekst[$isBestemmingsplan]">
 
-			<!-- Binnen PCP2008 zijn slechts 6 prefixen toegestaan bij plantype bestemmingsplan --> 
+			<!-- Binnen PCP2008 zijn slechts 6 prefixen toegestaan bij plantype bestemmingsplan -->
 			<iso:let name="bestandsprefixenRegexp" value="'(p|v|vb|t|tb|bd)_'"/>
 			<iso:extends rule="verwijzingNaarTekstCheck"/>
 		</iso:rule>
 
-			<!-- Alle verwijzingen naar tekst worden gecheckt in het geval dat plantype = beleidsplan --> 
+		<!-- Alle verwijzingen naar tekst worden gecheckt in het geval dat plantype = beleidsplan -->
 		<iso:rule context="//imro:verwijzingNaarTekst[not($isBestemmingsplan)]">
 
 			<!-- Binnen PCP2008 zijn slechts 4 prefixen toegestaan bij plantype beleidsplan-->
@@ -244,7 +244,7 @@ De planId (<iso:value-of select="$detectedPlanId"/>) volgt niet onmiddelijk na d
 			<iso:let name="coordinates" value="normalize-space(text())"/>
 			<iso:let name="coords" value="substring($coordinates,0,66)"/>
  
-			<!-- Try to tokenize the coordinates string and match every coordinate to an expression --> 
+			<!-- Try to tokenize the coordinates string and match every coordinate to an expression -->
   			<iso:assert test="regexp:matchesAfterTokenize($coordinates,$coordinaatFormat,$space)" diagnostics="coords">
 Foutcode AD7A: Coördinaten binnen <iso:value-of select="name()"/> moeten getallen zijn van maximaal 3 decimalen na de decimale komma, waarbij
 meerdere exemplaren gescheiden zijn door lege ruimten. Afwijking binnen element <iso:value-of select="ancestor::*[@gml:id][1]/@gml:id"/>.
@@ -293,9 +293,11 @@ Foutcode AD13: <iso:name/> dient een geometrische inhoud te hebben.
 			<iso:let name="day" value="substring(imro:datum/text(),9,2)"/>
 			<iso:let name="concatenatedDate" value="concat($year,$month,$day)"/>
 			
+			<!-- Gijs Koedam: Deze foutmelding verwijderd per 04-09-2018. Deze code werkt niet en is ook nooit geïmplementeerd in RPnl
 			<iso:assert test="not(imro:planstatus='vastgesteld') or (imro:planstatus='vastgesteld' and $concatenatedDate &lt; '20150701')">
 				Foutcode AD4C: een plancontour en PDF (plan conform PRPCP2008) moet vastgesteld zijn vóór 1 juli 2015. 				
 			</iso:assert>
+			-->
 			
 			<!--Deze waarschuwing verwijderd per 07-06-2017.  Door het vervallen van de actualiseringsplicht onder voorwaarde dat er een planversie aanwezig is in RPnl, moeten ook oudere plannen van voor de Nieuwe Wet ruimtelijke ordening alsnog worden toegelaten. Eerder konden we die wel tegenhouden.
 				<iso:report test="imro:planstatus='vastgesteld' and not($concatenatedDate&gt;20100101
@@ -307,12 +309,13 @@ Foutcode AD13: <iso:name/> dient een geometrische inhoud te hebben.
 			<!-- aanpassing dd. 02-05-2017 regel 2 -->
 			<iso:assert test="not(../../imro:typePlan='gemeentelijk plan; bestemmingsplan artikel 10') or ../../imro:typePlan='gemeentelijk plan; bestemmingsplan artikel 10' and ($concatenatedDate &lt; 20170102)">Een bestemmingsplan artikel 10 WRO kan niet meer met deze datum worden gepubliceerd; controleer de vaststellingsdatum of datum onherroepelijk</iso:assert>
 			<!-- aanpassing dd. 02-05-2017 regels 3 en 4 -->
-			<iso:report test="../../imro:typePlan='gemeentelijk plan; wijzigingsplan artikel 11' or ../../imro:typePlan='gemeentelijk plan; uitwerkingsplan artikel 11'">Let op! U publiceert een plan op basis van oude wetgeving (WRO). Dit kan alleen als het moederplan als ontwerp voor 1 juli 2008 ter inzage heeft gelegen en nog actueel is.</iso:report>
+			<iso:report test="../../imro:typePlan='gemeentelijk plan; wijzigingsplan artikel 11' or ../../imro:typePlan='gemeentelijk plan; uitwerkingsplan artikel 11'"  diagnostics="warning">Let op! U publiceert een plan op basis van oude wetgeving (WRO). Dit kan alleen als het moederplan als ontwerp voor 1 juli 2008 ter inzage heeft gelegen en nog actueel is.</iso:report>
 			<!-- aanpassing dd. 02-05-2017 regel 5 -->
 			<iso:assert test="not(../../imro:typePlan='gemeentelijk plan; voorbereidingsbesluit') ">U publiceert een plan dat juridisch gezien niet meer van toepassing is. Voorbereidingsbesluit op van basis van oude wetgeving mag na 1 juli 2008 (inwerkingtreden nieuwe Wro) niet meer.</iso:assert>
 		</iso:rule>
 		
-	</iso:pattern>	
+	</iso:pattern>
+	
 	
 	<!--
 		  _                _             ____        _______       __  __       _ _             _              _     _  
@@ -357,9 +360,8 @@ Foutcode AD13: <iso:name/> dient een geometrische inhoud te hebben.
 		                                                                            |___/                                                    
 	-->
 	
-	
 
-	
+
 	<iso:diagnostics>
 		<iso:diagnostic id="coords"><iso:value-of select="substring(text(),0,66)"/></iso:diagnostic>
 		<iso:diagnostic id="warning"></iso:diagnostic>
